@@ -1,0 +1,12 @@
+{
+  "name": "strategy",
+  "version": "1.0.0",
+  "description": "Este projeto tem como objetivo apresentar uma implementação do padrão de projeto Strategy em um contexto específico.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
