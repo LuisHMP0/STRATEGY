@@ -1,3 +1,4 @@
+/* SEM STRATEGY
 class Product {
     constructor(name, price) {
         this.name = name;
@@ -16,9 +17,22 @@ class Product {
         }
     }
 }
+*/
 
-// Uso
-const product = new Product('Camisa', 100);
-console.log(product.getPrice('none')); // 100
-console.log(product.getPrice('percentage')); // 90
-console.log(product.getPrice('fixed')); // 90
+class Product {
+    constructor(name, price, discountStrategy) {
+        this.name = name;
+        this.price = price;
+        this.discountStrategy = discountStrategy;
+    }
+
+    setDiscountStrategy(discountStrategy) {
+        this.discountStrategy = discountStrategy;
+    }
+
+    getPrice() {
+        return this.discountStrategy.apply(this.price);
+    }
+}
+
+module.exports = Product;
