@@ -1,6 +1,10 @@
 class NoDiscount {
-    apply(price) {
+    getDiscountedPrice(price) {
         return price;
+    }
+
+    toJSON() {
+        return 'NoDiscount';
     }
 }
 

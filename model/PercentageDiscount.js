@@ -1,6 +1,14 @@
 class PercentageDiscount {
-    apply(price) {
-        return price * 0.9; // 10% de desconto
+    constructor(percentage) {
+        this.percentage = percentage;
+    }
+
+    getDiscountedPrice(price) {
+        return price - (price * this.percentage / 100);
+    }
+
+    toJSON() {
+        return `PercentageDiscount (${this.percentage}%)`;
     }
 }
 

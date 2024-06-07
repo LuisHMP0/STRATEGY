@@ -30,8 +30,17 @@ class Product {
         this.discountStrategy = discountStrategy;
     }
 
-    getPrice() {
-        return this.discountStrategy.apply(this.price);
+    getDiscountedPrice() {
+        return this.discountStrategy.getDiscountedPrice(this.price);
+    }
+
+    toJSON() {
+        return {
+            name: this.name,
+            originalPrice: this.price,
+            discountedPrice: this.getDiscountedPrice(),
+            discountStrategy: this.discountStrategy.toJSON()
+        };
     }
 }
 

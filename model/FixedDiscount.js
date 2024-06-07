@@ -1,6 +1,14 @@
 class FixedDiscount {
-    apply(price) {
-        return price - 10; // Desconto fixo de $10
+    constructor(amount) {
+        this.amount = amount;
+    }
+
+    getDiscountedPrice(price) {
+        return price - this.amount;
+    }
+
+    toJSON() {
+        return `FixedDiscount ($${this.amount})`;
     }
 }
 

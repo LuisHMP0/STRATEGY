@@ -6,8 +6,8 @@ const FixedDiscount = require('./../model/FixedDiscount');
 // Criar alguns produtos como exemplo
 let products = [
     new Product('Camisa', 100, new NoDiscount()),
-    new Product('Calça', 150, new PercentageDiscount()),
-    new Product('Jaqueta', 200, new FixedDiscount())
+    new Product('Calça', 150, new PercentageDiscount(10)),
+    new Product('Jaqueta', 200, new FixedDiscount(30))
 ];
 
 const getProducts = (req, res) => {
@@ -25,7 +25,7 @@ const getProductById = (req, res) => {
 
 const updateProductDiscount = (req, res) => {
     const product = products[req.params.id];
-    const { discountType } = req.body;
+    const { discountType, value } = req.body;
 
     if (product) {
         switch (discountType) {
@@ -33,10 +33,10 @@ const updateProductDiscount = (req, res) => {
                 product.setDiscountStrategy(new NoDiscount());
                 break;
             case 'percentage':
-                product.setDiscountStrategy(new PercentageDiscount());
+                product.setDiscountStrategy(new PercentageDiscount(value));
                 break;
             case 'fixed':
-                product.setDiscountStrategy(new FixedDiscount());
+                product.setDiscountStrategy(new FixedDiscount(value));
                 break;
             default:
                 return res.status(400).send('Invalid discount type');
